@@ -22,7 +22,7 @@ const Login = () => {
   const isLoading = useSelector((state) =>
     isLoadingSelector([TYPES.LOGIN], state)
   );
-
+  console.log("isjvh", isLoading);
   const dispatch = useDispatch();
   const onChangeText = async (key, value) => {
     let obj = { ...body };
@@ -100,7 +100,7 @@ const Login = () => {
             onClick={() => handleSubmit()}
             className="signin-btn"
           >
-            LOGIN
+            {isLoading ? "Loading..." : "LOGIN"}
           </Button>
           <div
             style={{

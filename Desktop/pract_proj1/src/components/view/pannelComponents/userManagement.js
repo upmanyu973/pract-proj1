@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
+import { useSelector } from "react-redux";
+import { getUser } from "../../../redux/selectors/userSelector";
 import data from "../../../utils/constants/Data.json";
 const Usermanagement = () => {
   const [tableData, setTableData] = useState(data?.data);
+  const user = useSelector(getUser);
+  console.table(user);
   return (
     <div>
       <Table striped bordered hover>

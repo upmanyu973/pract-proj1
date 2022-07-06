@@ -1,5 +1,23 @@
-.sidebar-listButton{
+/* .sidebar-listButton{
     padding-right: 100px;
     align-items: flex-start;
-    cursor: "pointer",
+    cursor: "pointer";
+    
+} */
+
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+    background-color: #233044 !important;
+}
+
+.icon{
+    color : #fff
+}
+.menuList{
+    color :#fff
+}
+.css-hyum1k-MuiToolbar-root {
+    min-height: 68px !important;
+}
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper{
+background-color: #233044 !important;
 }

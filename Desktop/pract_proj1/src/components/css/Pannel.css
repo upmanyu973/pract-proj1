@@ -1,4 +1,5 @@
 .pannel{
+  /* float: right; */
   background-color: azure;
     flex-wrap: "wrap";
      height: "745px";

@@ -7,39 +7,31 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../css/Pannel.css";
 import { useNavigate } from "react-router-dom";
+import { Box, makeStyles } from "@mui/material";
 const Body = () => {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const drawerWidth = 240;
   const navigate = useNavigate();
-  // const [onHoverStyle, setOnHoverStyle] = useState({ display: "none" });
 
-  // const mouseOverEvent = () => {
-  //   setOnHoverStyle({ display: "unset" });
-  // };
-  // const mouseOffEvent = () => {
-  //   setOnHoverStyle({ display: "none" });
-  // };
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
   return (
-    <div>
-      <Navbar />
-      <Container fluid>
-        <Row>
-          {/* <Col
-            style={{
-              flexWrap: "wrap",
-              height: "745px",
-              borderRight: "2px solid grey",
-            }}
-            md={2}
-            // onMouseOver={mouseOverEvent}
-            // onMouseOut={mouseOffEvent}
-          >
-            <Sidebar navigate={navigate} /> */}
-          {/* </Col> */}
-          <Col md={12} className="pannel">
-            <Pannel />
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <Box sx={{ display: "flex" }}>
+      <Sidebar
+        drawerWidth={drawerWidth}
+        mobileOpen={mobileOpen}
+        handleDrawerToggle={handleDrawerToggle}
+        navigate={navigate}
+      />
+      <Navbar
+        drawerWidth={drawerWidth}
+        mobileOpen={mobileOpen}
+        handleDrawerToggle={handleDrawerToggle}
+        navigate={navigate}
+      />
+      <Pannel />
+    </Box>
   );
 };
 

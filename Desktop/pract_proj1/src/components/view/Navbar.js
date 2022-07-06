@@ -1,74 +1,3 @@
-// import Container from "react-bootstrap/Container";
-// import Nav from "react-bootstrap/Nav";
-// import Navbar from "react-bootstrap/Navbar";
-// import "../css/Navbar.css";
-// import NavDropdown from "react-bootstrap/NavDropdown";
-// import HomeIcon from "@mui/icons-material/Home";
-// import { useNavigate } from "react-router-dom";
-// import { useState } from "react";
-// import SearchBar from "../../common-components/searchBar";
-// import SettingsIcon from "@mui/icons-material/Settings";
-// import Logo from "../assets/Logo.png";
-// import Sidebar from "./Sidebar";
-// function AppBar() {
-//   const [show, setShow] = useState(false);
-//   const [navLinkData, setNavLinkData] = useState([
-//     {
-//       label: "hhjffccgffg",
-//     },
-//   ]);
-//   const navigate = useNavigate();
-//   return (
-//     <Navbar style={{ backgroundColor: "#000" }} expand="lg">
-//       <Sidebar navigate={navigate} />
-//       <Navbar.Brand>
-//         <img alt="logo" src={Logo} className="logo" />
-//       </Navbar.Brand>
-//       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-//       <Navbar.Collapse id="basic-navbar-nav">
-//         <Nav className="me-auto">
-//           {navLinkData.map((link, index) => {
-//             return (
-//               <Nav.Link
-//                 key={index}
-//                 style={{ color: "#fff" }}
-//                 className="navLink"
-//                 href="#home"
-//               >
-//                 {link.label}
-//               </Nav.Link>
-//             );
-//           })}
-//         </Nav>
-
-//         <SearchBar />
-//         {/* <Navbar.Text>
-//             {JSON.parse(localStorage.getItem("user")).email}
-//           </Navbar.Text> */}
-//         <NavDropdown
-//           id="nav-dropdown-dark-example"
-//           title={<SettingsIcon style={{ color: "#F7F9F9" }} />}
-//           menuVariant="dark"
-//         >
-//           <NavDropdown.Item onClick={() => setShow(true)}>
-//             Profile
-//           </NavDropdown.Item>
-//           <NavDropdown.Divider />
-//           <NavDropdown.Item
-//             onClick={() => {
-//               console.log("logout");
-//             }}
-//           >
-//             Logout
-//           </NavDropdown.Item>
-//         </NavDropdown>
-//       </Navbar.Collapse>
-//     </Navbar>
-//   );
-// }
-
-// export default AppBar;
-
 import * as React from "react";
 import "../css/Search.css";
 import AppBar from "@mui/material/AppBar";
@@ -84,18 +13,18 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import Sidebar from "./Sidebar";
+import MenuIcon from "@mui/icons-material/Menu";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import SearchBar from "./searchBar";
+import SearchBar from "../../common-components/searchBar";
+import Dropdown from "../../common-components/dropDown";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
-const Navbar = () => {
-  const navigate = useNavigate();
+const Navbar = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const { window, handleDrawerToggle, navigate, mobileOpen, drawerWidth } =
+    props;
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -112,29 +41,27 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="fixed"
+      borderLefvt={0}
+      style={{ backgroundColor: "black" }}
+      sx={{
+        width: { sm: `calc(100% - ${drawerWidth}px)` },
+        ml: { sm: `${drawerWidth}px` },
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Sidebar navigate={navigate} />
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -163,11 +90,11 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {/* {pages.map((page) => {(
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center"></Typography>
                 </MenuItem>
-              ))}
+              )})} */}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />

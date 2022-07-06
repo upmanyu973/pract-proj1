@@ -1,4 +1,5 @@
 import { header } from "./Headers";
+import axios from "axios";
 
 export const GET = async (url, headers, params) => {
   let h = await header({ ...headers });
@@ -14,8 +15,8 @@ export const GET = async (url, headers, params) => {
       })
       .catch((error) => {
         if (error?.response?.status == 401) {
-          navigate("Login");
-          // data = {error: error?.response?.data,res : false}
+          // navigate("Login");
+          data = { error: error?.response?.data, res: false };
         } else {
           data = { error: error?.response?.data, res: false };
         }
@@ -27,11 +28,10 @@ export const GET = async (url, headers, params) => {
 
 export const POST = async (url, Body, headers) => {
   var data;
-  let h = headers({ ...headers });
+  let h = await header({ ...headers });
   const config = {
     headers: h,
   };
-
   try {
     const body = JSON.stringify(Body);
     await axios
@@ -69,7 +69,7 @@ export const DELETE = async (url, headers, params) => {
       .catch((error) => {
         if (error?.response?.status == 401) {
           // navigate('Splash');
-          // data = { error: error?.response?.data, res: false }
+          data = { error: error?.response?.data, res: false };
         } else {
           data = { error: error?.response?.data, res: false };
         }
