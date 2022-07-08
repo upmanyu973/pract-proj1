@@ -15,3 +15,7 @@ export const loginError = (error) => ({
   type: TYPES.LOGIN_ERROR,
   payload: { error },
 });
+
+// export const clearStore = ()=>{
+//   st
+// }

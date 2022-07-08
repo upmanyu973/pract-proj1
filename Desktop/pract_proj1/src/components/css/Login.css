@@ -1,14 +1,14 @@
-.bgImg{
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("../assets/login-background.jpg");
+ /* .bgImg{
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("../assets/login-background.jpg"); */
   /* width: 100%;
   height: 100%; */
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-size: 100%  100%;
   background-attachment: fixed;
   opacity: inherit;
   display: flex;
-}
-
+} */
+/* 
 .login-card-container{
     width: 24rem;
     margin: auto;
@@ -42,4 +42,7 @@ box-shadow: rgb(0 0 0 / 14%) 0rem 0.25rem 1.25rem 0rem, rgb(0 187 212 / 40%) 0re
 }
 .forgotBtn{
     border: none;
+}  */
+.signin-btn{
+    width: 100%;
 }

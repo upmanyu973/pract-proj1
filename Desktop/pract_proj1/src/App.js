@@ -7,7 +7,7 @@ import { store } from "./redux/store/Store";
 import Body from "./components/view";
 function App() {
   return (
-    <div className="App">
+    <>
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
@@ -19,7 +19,7 @@ function App() {
 
         {/* <PersistGate persistor={persistor}></PersistGate> */}
       </Provider>
-    </div>
+    </>
   );
 }
 

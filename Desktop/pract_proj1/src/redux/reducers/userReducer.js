@@ -9,6 +9,9 @@ export const userReducer = (state = {}, { payload, type }) => {
     case TYPES.SIGNUP_SUCCESS:
       return { ...state, ...payload.user };
 
+    case TYPES.CLEAR_STORE:
+      return {};
+
     default:
       return state;
   }

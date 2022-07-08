@@ -4,9 +4,9 @@ import { TYPES } from "../types/types";
 const { ERROR, LOADING, NOT_STARTED, SUCCESS } = STATUS;
 
 export const statusReducer = (state = {}, { type }) => {
-  // if (type === TYPES.GLOBAL_RESET) {
-  //   return {};
-  // }
+  if (type === TYPES.CLEAR_STORE) {
+    return {};
+  }
 
   const matchesStart = /(.*)_(REQUEST)/.exec(type);
   const matchesError = /(.*)_(ERROR)/.exec(type);

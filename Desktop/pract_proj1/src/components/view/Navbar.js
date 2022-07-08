@@ -43,7 +43,6 @@ const Navbar = (props) => {
   return (
     <AppBar
       position="fixed"
-      borderLefvt={0}
       style={{ backgroundColor: "black" }}
       sx={{
         width: { sm: `calc(100% - ${drawerWidth}px)` },
@@ -154,11 +153,24 @@ const Navbar = (props) => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {settings.map((setting) => {
+                const onClick = (e) => {
+                  handleCloseUserMenu();
+                  if (e == "Logout") {
+                    console.log("logout", e);
+                  }
+                };
+                return (
+                  <MenuItem
+                    key={setting}
+                    onClick={() => {
+                      onClick(setting);
+                    }}
+                  >
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                );
+              })}
             </Menu>
           </Box>
         </Toolbar>
